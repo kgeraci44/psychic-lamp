@@ -10,16 +10,17 @@ public class MusicDetails {
 
 	 @Id
 	 @GeneratedValue(strategy=GenerationType.AUTO)
-	 private Integer idmusic_details;
+	 private Long idmusic_details;
 	 
 	 private String title;
 	 private Integer artist;
+	 private String album;
 	 private String location;
 	 
-	public Integer getIdmusic_details() {
+	public Long getIdmusic_details() {
 		return idmusic_details;
 	}
-	public void setIdmusic_details(Integer idmusic_details) {
+	public void setIdmusic_details(Long idmusic_details) {
 		this.idmusic_details = idmusic_details;
 	}
 	public String getTitle() {
@@ -39,6 +40,12 @@ public class MusicDetails {
 	}
 	public void setLocation(String location) {
 		this.location = location;
+	}
+	public String getAlbum() {
+		return album;
+	}
+	public void setAlbum(String album) {
+		this.album = album;
 	}
 	 
 	 

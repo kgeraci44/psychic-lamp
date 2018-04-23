@@ -13,7 +13,9 @@ import java.util.List;
 @Service
 public class MusicStorageServiceImpl implements MusicStorageService{
 
-    private final AmazonS3 s3 = AmazonS3ClientBuilder.defaultClient();
+    private final AmazonS3 s3 = AmazonS3ClientBuilder.standard().withRegion("us-east-2")
+            .withForceGlobalBucketAccessEnabled(true) 
+            .build();;
 
     @Override
     public String testMethod(String id) {
@@ -27,10 +29,10 @@ public class MusicStorageServiceImpl implements MusicStorageService{
         return key;
     }
 
-    @Override
-    public InputStream getSong() {
-        S3Object song = s3.getObject("testingbucket-us-east-kg1234", "id");
-        ListObjectsV2Result result = s3.listObjectsV2("testingbucket-us-east-kg1234");
+
+	@Override
+	public InputStream getSong(String songLocation) {
+		S3Object song = s3.getObject("testingbucket-us-east-kg1234", songLocation);
         return song.getObjectContent();
-    }
+	}
 }
